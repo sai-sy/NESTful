@@ -2,9 +2,11 @@ from flask import Flask, request
 from flask_restful import Api, Resource, reqparse, abort
 from flask_sqlalchemy import SQLAlchemy
 
+import config
+
 app = Flask(__name__)
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config.from_object(config.DevelopmentConfig)
 db = SQLAlchemy(app)
 db.create_all()
 
@@ -63,8 +65,6 @@ class Video(Resource):
         abort_if_id_invalid(video_id=video_id)
         del videos[video_id]
         return '', 204
-
-api.add_resource(Video, "/video/<int:video_id>")
 
 if __name__ == "__main__":
     app.run(debug=True)
