@@ -2,6 +2,9 @@ import os
 from dotenv import load_dotenv
 
 class Config(object):
+    # UX SPECFIC
+    MAX_ACCOUNTS_UNDER_EMAIL = 4
+
     #load_dotenv()
     DEBUG = False
     TESTING = False

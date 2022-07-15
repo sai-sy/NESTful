@@ -8,7 +8,6 @@ import config
 
 # Globally accessible libraries
 db:SQLAlchemy = SQLAlchemy()
-api:Api = Api()
 migrate:Migrate = Migrate()
 ma:Marshmallow = Marshmallow()
 
@@ -20,7 +19,6 @@ def init_app():
 
     # Initialize Plugins
     db.init_app(app)
-    api.init_app(app)
     migrate.init_app(app, db)
     ma.init_app(app)
 
@@ -29,14 +27,18 @@ def init_app():
         # Include our Routes
         from .routes.views import views
         from .routes.videos import videos
+        from .routes.personRoute import personRoute
+
 
         # Import Models
         #from .models.person import Person, PersonResource
         from .models.video import Video
+        from .models.person import Person
         
         # Register Blueprints
         app.register_blueprint(views, url_prefix='/')
         app.register_blueprint(videos, url_prefix='/')
+        app.register_blueprint(personRoute, url_prefix='/')
 
         db.create_all()
 

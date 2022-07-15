@@ -1,10 +1,11 @@
 import requests
 import json
 
-BASE = "http://127.0.0.1:5000/"
+BASE = "http://api.saiscripts.com/"
 
-payload = {"likes": 10, "views": 50, "name": "krish one kiss dance"}
+ON = "https://represent.opennorth.ca/"
 
-response = requests.get(BASE + 'videos/1', json=payload)
+payload = {"email": "saihaansyedprofiles@gmail.com", "postal_code": "M1L 3G6"}
+response = requests.post(BASE + 'persons/email/saihaansyedprofiles@gmail.com', json=payload)
 
-print(response.json())
+print(response.text)
