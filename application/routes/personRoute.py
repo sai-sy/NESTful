@@ -1,7 +1,5 @@
 from http.client import BAD_REQUEST
 from flask import Blueprint, request, abort, current_app
-from marshmallow.exceptions import ValidationError
-import json
 
 from .. import db
 from ..models.person import Person
