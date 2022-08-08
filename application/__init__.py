@@ -26,18 +26,15 @@ def init_app():
 
         # Include our Routes
         from .routes.views import views
-        from .routes.videos import videos
         from .routes.personRoute import personRoute
 
 
         # Import Models
         #from .models.person import Person, PersonResource
-        from .models.video import Video
         from .models.person import Person
         
         # Register Blueprints
         app.register_blueprint(views, url_prefix='/')
-        app.register_blueprint(videos, url_prefix='/')
         app.register_blueprint(personRoute, url_prefix='/')
 
         db.create_all()
